@@ -1,28 +1,19 @@
-package com.horyu1234.nicknamehistory.json;
-
 /*
-Copyright (c) 2002 JSON.org
+ * Copyright (c) 2015 HoryuSystems All rights reserved.
+ *
+ * 본 저작물의 모든 저작권은 HoryuSystems 에 있습니다.
+ *
+ * 소스를 참고하여 다른 프로그램을 제작하는 것은 허용되지만,
+ * 프로그램의 접두사, 기능등의 수정 및 배포는 불가능합니다.
+ *
+ * 소스에 대한 피드백등은 언제나 환영합니다! 아래는 개발자 연락처입니다.
+ *
+ * Skype: horyu1234
+ * KakaoTalk: horyu1234
+ * Telegram: @horyu1234
+ */
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-The Software shall be used for Good, not Evil.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+package com.horyu1234.nicknamehistory.json;
 
 import java.util.Iterator;
 
