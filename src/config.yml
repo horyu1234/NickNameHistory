@@ -4,10 +4,10 @@
 #
 #Copyright 2014 ~ 2015 . horyu1234 . All rights reserved
 #
-#í”ŒëŸ¬ê·¸ì¸ì˜ EULAì— ë™ì˜í•˜ì‹ ë‹¤ë©´ EULA ì˜µì…˜ì„ true ë¡œ ë°”ê¿”ì£¼ì„¸ìš”.
-#EULAë¥¼ ë™ì˜í•˜ì…”ì•¼ë§Œ í”ŒëŸ¬ê·¸ì¸ì˜ ì‚¬ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+#ÇÃ·¯±×ÀÎÀÇ EULA¿¡ µ¿ÀÇÇÏ½Å´Ù¸é EULA ¿É¼ÇÀ» true ·Î ¹Ù²ãÁÖ¼¼¿ä.
+#EULA¸¦ µ¿ÀÇÇÏ¼Å¾ß¸¸ ÇÃ·¯±×ÀÎÀÇ »ç¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.
 #
 #EULA: https://horyu1234.com/EULA
 
 EULA: false
-DateFormat: "yyyyë…„MMì›”ddì¼_hhì‹œmmë¶„ssì´ˆ"
+DateFormat: "yyyy³âMM¿ùddÀÏ_hh½ÃmmºÐssÃÊ"
