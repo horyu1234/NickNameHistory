@@ -1,0 +1,8 @@
+name: NickNameHistory
+main: com.horyu1234.nicknamehistory.NickNameHistory
+version: 1.3
+author: horyu1234
+
+commands:
+  nh:
+    description: NickNameHistory Command.
