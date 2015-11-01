@@ -8,7 +8,6 @@
 #EULA를 동의하셔야만 플러그인의 사용이 가능합니다.
 #
 #EULA: https://horyu1234.com/EULA
-#
-#EULA: false
 
 EULA: false
+DateFormat: "yyyy년MM월dd일_hh시mm분ss초"

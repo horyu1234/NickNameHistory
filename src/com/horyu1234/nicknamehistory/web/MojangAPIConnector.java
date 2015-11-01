@@ -52,7 +52,7 @@ public class MojangAPIConnector
 					if (json.has("changedToAt"))
 					{
 						long t = json.getLong("changedToAt");
-						SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy년MM월dd일_hh시mm분ss초",Locale.KOREA);
+						SimpleDateFormat simpleDate = new SimpleDateFormat(plugin.getConfig().getString("DateFormat"), Locale.KOREA);
 						s.sendMessage("§e"+json.getString("name")+" §f| §e"+simpleDate.format(t));
 					}
 					else
