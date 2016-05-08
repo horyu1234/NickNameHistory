@@ -23,37 +23,69 @@
 
 package com.horyu1234.nicknamehistory.web;
 
+import com.horyu1234.nicknamehistory.NickNameHistory;
+import org.bukkit.command.CommandSender;
+
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateChecker
+public class UpdateChecker implements Runnable
 {
-	public static double getVersion(String name)
-	{
-		String plugin_name = "@"+name+"@";
-		try
-		{
-			URL url = new URL("https://raw.githubusercontent.com/horyu1234/Checker/master/Update");
-			HttpURLConnection urlConn = (HttpURLConnection)url.openConnection();
-			urlConn.setDoOutput(true);
-			BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream(), "UTF8"));
-			String inputLine;
-			while ((inputLine = br.readLine()) != null)
-			{
-				if (inputLine.contains(plugin_name))
-				{
-					String version = inputLine.split(plugin_name)[1];
-					return Double.parseDouble(version);
+	private NickNameHistory plugin;
+	private CommandSender sender;
+	private String url_str;
+
+	public UpdateChecker(final NickNameHistory plugin, final CommandSender sender) {
+		this.plugin = plugin;
+		this.sender = sender;
+		this.url_str = "http://minecraft.horyu.me/minecraft/" + plugin.getName() + "/version";
+		new Thread(this).start();
+	}
+
+	public void run() {
+		try {
+			URL url = new URL(url_str);
+			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+			httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; ko) HandGiveAll/" + plugin.getDescription().getVersion() + " (Made By horyu1234)");
+			httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			httpURLConnection.setRequestProperty("Content-Language", "ko-KR");
+			httpURLConnection.setDoOutput(true);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "UTF8"));
+
+			String msg;
+			while ((msg = bufferedReader.readLine()) != null) {
+				double plugin_version = Double.parseDouble(msg);
+				bufferedReader.close();
+
+				if (plugin_version > plugin.nowver) {
+					sender.sendMessage(plugin.prefix + "§b#==============================#");
+					sender.sendMessage(plugin.prefix + "§f플러그인의 새로운 업데이트가 발견되었습니다!");
+					sender.sendMessage(plugin.prefix + "§c현재버전: " + plugin.nowver);
+					sender.sendMessage(plugin.prefix + "§a새로운버전: " + plugin_version);
+					sender.sendMessage(plugin.prefix + "§e플러그인 다운로드 링크: https://horyu1234.com/NickNameHistory");
+					sender.sendMessage(plugin.prefix + "§b#==============================#");
+					new Thread(new Runnable() {
+						public void run() {
+							JOptionPane.showMessageDialog(null, "플러그인의 새로운 업데이트가 발견되었습니다!", "HandGiveAll v" + plugin.nowver, JOptionPane.INFORMATION_MESSAGE);
+						}
+					}).start();
+				} else if (plugin_version == plugin.nowver) {
+					sender.sendMessage(plugin.prefix + "§f새로운 버전이 없습니다.");
+				} else {
+					sender.sendMessage(plugin.prefix + "§f#==============================#");
+					sender.sendMessage(plugin.prefix + "§c플러그인의 버전을 확인하는데 문제가 발생했습니다.");
+					sender.sendMessage(plugin.prefix + "§f#==============================#");
 				}
+				return;
 			}
-			br.close();
+			bufferedReader.close();
 		}
-		catch (Exception e)
-		{
-			System.out.println("UpdateChecker Exception: " + e.toString());
+		catch (Exception exception) {
+			plugin.sendConsole("§c업데이트를 확인하는 중 문제가 발생했습니다.");
+			plugin.sendConsole("§c메시지: " + exception.getMessage());
 		}
-		return 0.0D;
 	}
 }

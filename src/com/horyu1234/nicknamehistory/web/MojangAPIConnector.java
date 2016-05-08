@@ -54,7 +54,7 @@ public class MojangAPIConnector
 		if (obj == null)
 		{
 			s.sendMessage("§cJSON 을 가져오는 중 오류가 발생했습니다!");
-			s.sendMessage("§eNickNameHistory v1.3 §bBy §6horyu1234");
+			s.sendMessage("§eNickNameHistory v1.4 §bBy §6horyu1234");
 			s.sendMessage("§a=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			return false;
 		}
@@ -83,7 +83,7 @@ public class MojangAPIConnector
 				catch (Exception e)
 				{
 					s.sendMessage("§cJSON을 변환하는 중 오류가 발생했습니다!");
-					s.sendMessage("§eNickNameHistory v1.3 §bBy §6horyu1234");
+					s.sendMessage("§eNickNameHistory v1.4 §bBy §6horyu1234");
 					s.sendMessage("§a=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 					return false;
 				}
@@ -92,8 +92,8 @@ public class MojangAPIConnector
 			s.sendMessage("§3시간은 한국시간 기준입니다.");
 		}
 		else
-			s.sendMessage("§c해당 플레이어는 닉네임을 바꾼적이 없습니다.");
-		s.sendMessage("§eNickNameHistory v1.3 §bBy §6horyu1234");
+			s.sendMessage("§c해당 플레이어는 닉네임을 변경한 적이 없습니다.");
+		s.sendMessage("§eNickNameHistory v1.4 §bBy §6horyu1234");
 		s.sendMessage("§a=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		return true;
 	}
@@ -134,7 +134,7 @@ public class MojangAPIConnector
 		}
 		catch (Exception e)
 		{
-			Bukkit.broadcastMessage(plugin.prefix+"§cJSON 을 가져오는데 문제가 발생했습니다!");
+			//Bukkit.broadcastMessage(plugin.prefix+"§cJSON 을 가져오는데 문제가 발생했습니다!");
 		}
 		return null;
 	}
@@ -150,13 +150,15 @@ public class MojangAPIConnector
 			String inputLine;
 			while ((inputLine = br.readLine()) != null)
 			{
-				return inputLine.contains("true") ? true : false;
+				if (inputLine.startsWith("{\"id\":\"")) {
+					return true;
+				}
 			}
 			br.close();
 		}
 		catch (Exception e)
 		{
-			System.out.println("WebConnect Exception: " + e.toString());
+			Bukkit.broadcastMessage(plugin.prefix + "WebConnect Exception: " + e.toString());
 		}
 		return false;
 	}
