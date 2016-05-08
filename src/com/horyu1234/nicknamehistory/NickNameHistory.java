@@ -195,6 +195,7 @@ public class NickNameHistory extends JavaPlugin implements Listener
         s.sendMessage("§6모든정보는 모장서버와 통신을 통해 받아옴으로, 서버에 접속한적이 없어도 조회가 가능합니다.");
         s.sendMessage("§a/nh name <닉네임> §f<닉네임>의 닉네임변경 기록을 봅니다.");
         s.sendMessage("§a/nh uuid <uuid> §f<UUID>의 닉네임변경 기록을 봅니다.");
+        s.sendMessage("§a/nhn §fNickNameHistory 공지를 확인합니다.");
         s.sendMessage("");
         s.sendMessage("§a플러그인제작: horyu1234");
         s.sendMessage("§9=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
